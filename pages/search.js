@@ -1,8 +1,12 @@
-import React from 'react'
+import { useState } from 'react'
 import tw from "tailwind-styled-components";
 import Link from "next/link";
 
 function Search() {
+
+    const [pickup, setPickup] = useState("");
+    const [dropoff, setDropoff] = useState("");
+
     return (
       <Wrapper>
         <ButtonContainer>
@@ -17,17 +21,33 @@ function Search() {
             <Square src="https://img.icons8.com/windows/50/000000/square-full.png" />
           </FromToIcons>
           <InputBoxes>
-            <Input placeholder="Enter pick up location" />
-            <Input placeholder="Where to" />
+            <Input 
+            placeholder="Enter pickup location"
+            value={pickup} 
+            onChange={(e) =>  setPickup(e.target.value)}
+            />
+            <Input 
+            placeholder="Where to" 
+            value={dropoff}
+            onChange={(e) => setDropoff(e.target.value)}
+            />
           </InputBoxes>
           <PlusIcon src="https://img.icons8.com/ios/50/000000/plus-math.png" />
         </InputContainer>
         <SavedPlaces>
             <StarICon src="https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" /> Saved Places
         </SavedPlaces>
-        <ConfirmLocations>
+        <Link href={{
+            pathname: "/confirm",
+            query: {
+                pickup: pickup,
+                dropoff: dropoff
+            },
+        }}>
+        <CofirmButtonContainer>
             <Button>Confirm Locations</Button>
-        </ConfirmLocations>
+        </CofirmButtonContainer>
+        </Link>
       </Wrapper>
     );
 }
@@ -44,7 +64,7 @@ const ButtonContainer = tw.div`
 `
 
 const BackButton = tw.img`
-    h-12
+    h-12 cursor-pointer
 `
 
 const InputContainer = tw.div`
@@ -86,7 +106,7 @@ const StarICon = tw.img`
     bg-gray-400 w-10 h-10 p-2 rounded-full mr-2 
 `;
 
-const ConfirmLocations = tw.div`
+const CofirmButtonContainer = tw.div`
     flex flex-col bg-black mt-2 mr-4 ml-4
 `;
 
