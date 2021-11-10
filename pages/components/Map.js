@@ -3,6 +3,7 @@ import tw from "tailwind-styled-components"
 import mapboxgl from "!mapbox-gl";
 // import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 
+// Trying to use the mapbox direction API to show routes from pickup point to dropoff point
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWRlb2xhb25hZHMiLCJhIjoiY2s0dTVoNGNkMXE4NDNkcDFnNjNveGRidCJ9.Od3e8VJC-_Y5KxLZEkapRw";
